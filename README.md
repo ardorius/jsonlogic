@@ -1,2 +1,2 @@
 # jsonlogic
-examples - how to use jsonlogin  in JS, TS, Angular
+examples - how to use jsonlogic  in JS, TS, Angular
