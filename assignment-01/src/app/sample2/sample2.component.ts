@@ -14,7 +14,9 @@ export class Sample2Component {
 
   ngOnInit(): void {
 
-    this.data = [{ "itemid": 1001, "order": 3 }, { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 }];
+    let originalData = [{ "itemid": 1001, "order": 3 }, { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 }];//problem s jsonlogic.apply, ktory to zmodifikoval
+
+    this.data = JSON.parse(JSON.stringify(originalData));
 
     this.rule = { "sort": [ { "var": "" }, "order", false ] }
 
@@ -52,7 +54,7 @@ export class Sample2Component {
     // Data: [ { "itemid": 1001, "order": 3 }, { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 } ]
     // Vystup: [ { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 }, { "itemid": 1001, "order": 3 } ]
 
-    this.outputTask = jsonLogic.apply(this.rule, this.data);
+    this.outputTask = jsonLogic.apply(this.rule, originalData);
 
     console.log('Sample 2 output: ' + JSON.stringify(this.outputTask)); // vypíše ample 2 output: [{"itemid":1001,"order":3},{"itemid":1003,"order":2},{"itemid":1002,"order":1}]
   }
