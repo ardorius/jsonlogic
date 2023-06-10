@@ -7,10 +7,13 @@ import * as jsonLogic from 'json-logic-js';
   styleUrls: ['./sample.component.css'],
 })
 export class SampleComponent implements OnInit {
-  outputTask: any;
+  public rule: any;
+  public data: any;
+  public outputTask: any;
+  public expanded = { rule: false, data: false, output: false };
 
   ngOnInit(): void {
-    let data = {
+    this.data = {
       entry: {
         _entryId: 2239,
         _contentType: 'instr-content',
@@ -125,7 +128,7 @@ export class SampleComponent implements OnInit {
     };
 
     // uloha je napisat podmienku (Rule) tak, aby vysledok podmienky bol true ak:
-    const rule: any = {
+    this.rule = {
       and: [
         {
           in: [{ var: 'entry.status' }, ['draft', 'published']], // - zaznam je v statuse draft alebo published
@@ -176,7 +179,7 @@ export class SampleComponent implements OnInit {
     // - status zaznamu sa uklada do property status
     // - eventy zaznamu su ulozene v property array-events
 
-    this.outputTask = jsonLogic.apply(rule, data);
+    this.outputTask = jsonLogic.apply(this.rule, this.data);
 
     console.log('Sample 1 output: ' + this.outputTask); // vypíše "false", neexistuje "request-process-started"
   }

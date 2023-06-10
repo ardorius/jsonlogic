@@ -1,1 +1,12 @@
-/* You can add global styles to this file, and also import other style files */
+pre {
+  background-color: #f1f1f1;
+  transition: background-color .3s,color .3s;
+  border-radius: 5px;
+  width: -moz-fit-content;
+  width: fit-content;
+  padding: 5px;
+}
+:host {
+  overflow: auto;
+  max-height: 100vh;
+}

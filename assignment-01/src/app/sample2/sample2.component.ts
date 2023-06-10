@@ -7,13 +7,16 @@ import * as jsonLogic from 'json-logic-js';
   styleUrls: ['./sample2.component.css']
 })
 export class Sample2Component {
-  outputTask: any;
+  public rule: any;
+  public data: any;
+  public outputTask: any;
+  public expanded = { rule: false, data: false, output: false };
 
   ngOnInit(): void {
 
-    let data = [{ "itemid": 1001, "order": 3 }, { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 }];
+    this.data = [{ "itemid": 1001, "order": 3 }, { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 }];
 
-    const rule: any = { "sort": [ { "var": "" }, "order", false ] }
+    this.rule = { "sort": [ { "var": "" }, "order", false ] }
 
     let sort = function(arr: any[], prop: any, asc: boolean) {
       return arr.sort((a,b) => {
@@ -49,7 +52,7 @@ export class Sample2Component {
     // Data: [ { "itemid": 1001, "order": 3 }, { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 } ]
     // Vystup: [ { "itemid": 1002, "order": 1 }, { "itemid": 1003, "order": 2 }, { "itemid": 1001, "order": 3 } ]
 
-    this.outputTask = jsonLogic.apply(rule, data);
+    this.outputTask = jsonLogic.apply(this.rule, this.data);
 
     console.log('Sample 2 output: ' + JSON.stringify(this.outputTask)); // vypíše ample 2 output: [{"itemid":1001,"order":3},{"itemid":1003,"order":2},{"itemid":1002,"order":1}]
   }
