@@ -1,12 +1,12 @@
 <h2>Sample 1</h2>
 <div>
-  <h3>Rule <button class="btn btn-primary" (click)="expanded.rule = !expanded.rule">Toggle for more</button></h3>
+  <h3>Rule <button class="btn btn-primary" (click)="expanded.rule = !expanded.rule">{{ expanded.rule ? 'Reduce' : 'Expand' }}</button></h3>
   <pre *ngIf="expanded.rule">{{ rule | json }}</pre>
   <pre *ngIf="!expanded.rule">{{ (rule | json).slice(0, 250) }}</pre>
 </div>
 
 <div>
-  <h3>Data <button class="btn btn-primary" (click)="expanded.data = !expanded.data">Toggle for more</button></h3>
+  <h3>Data <button class="btn btn-primary" (click)="expanded.data = !expanded.data">{{ expanded.data ? 'Reduce' : 'Expand' }}</button></h3>
   <pre *ngIf="expanded.data">{{ data | json }}</pre>
   <pre *ngIf="!expanded.data">{{ (data | json).slice(0, 250) }}</pre>
 </div>
